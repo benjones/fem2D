@@ -1,0 +1,25 @@
+{
+    "femObjects" : [
+	{
+	    "meshName" : "triangle.1",
+	    "density" : 1000,
+	    "lambda" : 1e6,
+	    "mu" : 1e6,
+	    "dampLambda" : 0, //1,
+	    "dampMu" : 0, //1,
+	    "centerTo" : {
+		"x": 0,
+		"y" : 8
+		}
+	}
+    ],
+
+    "dt" : 0.001,
+
+    "planeObstacles" : [
+	{ "x" : 0,
+	  "y" : 1,
+	  "offset" : 0
+	}
+    ]
+}
