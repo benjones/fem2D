@@ -3,18 +3,20 @@
 	{
 	    "meshName" : "triangle.1",
 	    "density" : 1000,
-	    "lambda" : 1e6,
-	    "mu" : 1e6,
+	    "lambda" : 1e4,
+	    "mu" : 1e4,
 	    "dampLambda" : 0, //1,
 	    "dampMu" : 0, //1,
+	    "raleighAlpha" : 0,
+	    "raleighBeta" : 0,
 	    "centerTo" : {
 		"x": 0,
-		"y" : 8
+		"y" : 5
 		}
 	}
     ],
 
-    "dt" : 0.001,
+    "dt" : 0.01,
 
     "planeObstacles" : [
 	{ "x" : 0,

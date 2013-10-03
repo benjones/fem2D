@@ -38,7 +38,9 @@ World::World(std::string filename){
 	femJson.get("lambda", 1e4).asDouble(),
 	femJson.get("mu", 1e4).asDouble(),
 	femJson.get("dampLambda", 1).asDouble(),
-	femJson.get("dampMu", 1).asDouble()};
+	femJson.get("dampMu", 1).asDouble(),
+	femJson.get("raleighAlpha", 1).asDouble(),
+	femJson.get("raleighBeta", 1).asDouble()};
 
     if( !femJson["centerTo"].isNull()){
 
@@ -99,7 +101,8 @@ void World::integrate(){
 
 
   for(auto & f : femObjects){
-    f.integrate(dt);
+    //    f.integrate(dt);
+    f.integrateBackwardsEuler(dt);
     f.collidePlanes(planeObstacles);
   }
 }

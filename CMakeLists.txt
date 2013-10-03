@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6)
 add_definitions(-D_CRT_SECURE_NO_WARNINGS )
 SET(CMAKE_CXX_COMPILER clang++)
 #ADD_DEFINITIONS(" -g -O0 ")
-#ADD_DEFINITIONS("-std=c++11 -stdlib=libc++ -g  -O -Wall -Wuninitialized -Weverything -Wno-c++98-compat")
+#ADD_DEFINITIONS("-std=c++11 -stdlib=libc++ -g  -O -Wall -Wuninitialized -Weverything -Wno-c++98-compat -Wno-padded")
 #ADD_DEFINITIONS("-std=c++11 -pg -stdlib=libc++ -static -O2")
 ADD_DEFINITIONS("-std=c++11 -stdlib=libc++ -O2 -Wall -Wuninitialized")
 
@@ -51,6 +51,7 @@ add_executable(femApp
   jsoncpp.cpp
   world.cpp
   planeObstacle.cpp
+  stiffnessMatrix.cpp
   )
 
 #add_executable(dogRollerskatesGame
