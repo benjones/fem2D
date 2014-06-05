@@ -1,15 +1,15 @@
 {
     "femObjects" : [
 	{
-	    "meshName" : "box.3",
+	    "meshName" : "box.4",
 	    "density" : 1100,
-	    "lambda" : 5e5,
-	    "mu" : 5e5,
+	    "lambda" : 9e6,
+	    "mu" : 9e6,
 	    "dampLambda" : 2000,
 	    "dampMu" : 2000,
 	    "raleighAlpha" : 0,
 	    "raleighBeta" : 0,
-	    "toughness" : 7e4,
+	    "toughness" : 2e5,
 	    "centerTo" : {
 		"x": 0,
 		"y" : 3
@@ -19,7 +19,7 @@
 	}
     ],
 
-    "dt" : 0.01,
+    "dt" : 0.005,
 
     "planeObstacles" : [
 	{ "x" : 0,

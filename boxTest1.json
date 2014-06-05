@@ -1,7 +1,7 @@
 {
     "femObjects" : [
 	{
-	    "meshName" : "box.3",
+	    "meshName" : "box.2",
 	    "density" : 1100,
 	    "lambda" : 5e5,
 	    "mu" : 5e5,
@@ -9,7 +9,7 @@
 	    "dampMu" : 2000,
 	    "raleighAlpha" : 0,
 	    "raleighBeta" : 0,
-	    "toughness" : 7e4,
+	    "toughness" : 3e4,
 	    "centerTo" : {
 		"x": 0,
 		"y" : 3

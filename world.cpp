@@ -33,6 +33,10 @@ World::World(std::string filename){
     
     readNodeAndEle(meshName, vertices, triangles);
     
+    for(auto j = 0; j < femJson["constrainedNodes"].size(); j++){
+      f.constrainedNodes.push_back(femJson["constrainedNodes"][j].asUInt64());
+    }
+
     auto materialParameters = MaterialParameters 
       { femJson.get("density", 1000).asDouble(),
 	femJson.get("lambda", 1e4).asDouble(),
@@ -40,7 +44,11 @@ World::World(std::string filename){
 	femJson.get("dampLambda", 1).asDouble(),
 	femJson.get("dampMu", 1).asDouble(),
 	femJson.get("raleighAlpha", 1).asDouble(),
-	femJson.get("raleighBeta", 1).asDouble()};
+	femJson.get("raleighBeta", 1).asDouble(),
+	femJson.get("toughness", 1e10).asDouble()
+      };
+
+    std::cout << "toughness: " << materialParameters.toughness << std::endl;
 
     if( !femJson["centerTo"].isNull()){
 

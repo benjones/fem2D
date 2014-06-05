@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+#include "utils.h"
+
 
 SDL_Window* surface;
 

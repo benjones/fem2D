@@ -1,25 +1,24 @@
 {
     "femObjects" : [
 	{
-	    "meshName" : "box.3",
-	    "density" : 1100,
-	    "lambda" : 5e5,
-	    "mu" : 5e5,
+	    "meshName" : "ring.1",
+	    "density" : 1000,
+	    "lambda" : 1e6,
+	    "mu" : 1e6,
 	    "dampLambda" : 2000,
 	    "dampMu" : 2000,
 	    "raleighAlpha" : 0,
 	    "raleighBeta" : 0,
-	    "toughness" : 7e4,
+	    "toughness" : 3e5,
 	    "centerTo" : {
 		"x": 0,
-		"y" : 3
+		"y" : 4
 		},
-	    "desiredScale" : 12,
-	    "constrainedNodes" : [2,3]
+	    "desiredScale" : 12
 	}
     ],
 
-    "dt" : 0.01,
+    "dt" : 0.033,
 
     "planeObstacles" : [
 	{ "x" : 0,

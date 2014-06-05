@@ -12,6 +12,12 @@ public:
   double mass;
   vec2 force;
 
+  vec2 tensileForces, compressiveForces;
+
+  mat2 tensileTensor, compressiveTensor;
+
+  std::vector<size_t> triangles;
+
 };
 
 class FemElement {
@@ -25,7 +31,9 @@ public:
   mat2 stiffnessMatrices[6];
   //00, 01, 02, 11, 12, 22, symmetric, so only store these
 
-  mat2 elementRotation;
+  mat2 stress, elementRotation;
+
+  double area;
 
   vec2 forceOffset[3];
 };
@@ -34,6 +42,7 @@ public:
 struct MaterialParameters{
   double density, lambda, mu, dampLambda, dampMu;
   double raleighAlpha, raleighBeta;
+  double toughness;
   //C = alpha*massMatrix + beta*stiffnessMatrix
 };
 
@@ -58,6 +67,8 @@ public:
   void setForcesToGravity();
   void computeDeformationGradient(bool isExplicit);
   void constrainNodes();
+  void doFracture();
+
 
   std::vector<FemNode> nodes;
   std::vector<FemElement> elements;
@@ -67,6 +78,8 @@ public:
 
   std::vector<double> rhsSolve, velocityGuess;
   
+  std::vector<size_t> constrainedNodes;
+
   double dt;
 
 };

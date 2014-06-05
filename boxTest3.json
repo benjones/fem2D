@@ -3,13 +3,13 @@
 	{
 	    "meshName" : "box.3",
 	    "density" : 1100,
-	    "lambda" : 5e5,
-	    "mu" : 5e5,
+	    "lambda" : 2e5,
+	    "mu" : 2e5,
 	    "dampLambda" : 2000,
 	    "dampMu" : 2000,
 	    "raleighAlpha" : 0,
 	    "raleighBeta" : 0,
-	    "toughness" : 7e4,
+	    "toughness" : 4e4,
 	    "centerTo" : {
 		"x": 0,
 		"y" : 3
