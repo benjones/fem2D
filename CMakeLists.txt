@@ -12,9 +12,9 @@ set(SRCS
   
   )
 
-
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 find_package(OpenGL REQUIRED)
-#find_package(SDL2 REQUIRED)
+find_package(SDL2 REQUIRED)
 
 
 include_directories (
@@ -22,8 +22,8 @@ include_directories (
   /usr/local/include
   /usr/local/include/eigen3
   ${OPENGL_INCLUDE_DIR}
-  /Library/Frameworks/SDL2.framework/Headers
-  /System/Library/Frameworks/vecLib.framework/Headers
+  ${SDL2_INCLUDE_DIR}
+  #/System/Library/Frameworks/vecLib.framework/Headers
   )
 
 
@@ -58,15 +58,13 @@ add_executable(femApp
 #	dogRollerskatesGame.cpp
 #	${SRCS}
 #)
-SET( CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -framework SDL2 -framework vecLib" )
+SET( CMAKE_EXE_LINKER_FLAGS  ${CMAKE_EXE_LINKER_FLAGS}  " -framework Accelerate" )
 
 target_link_libraries ( 
   femApp
   ${ADDITIONAL_LIBRARIES}
   ${OPENGL_LIBRARIES}
-  #mosek64
-  c++
-  stdc++
+  ${SDL2_LIBRARY}
   ) 
 
 

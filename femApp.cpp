@@ -62,7 +62,7 @@ void drawFrame(World& world){
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  gluOrtho2D(-10, 10, -1, 19);
+  gluOrtho2D(-2, 2, -2, 2);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 

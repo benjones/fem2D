@@ -28,7 +28,9 @@ bool readNodeAndEle(std::string filename,
 bool readNodeFile(std::string filename, std::vector<double>& vertices){
 
   std::ifstream ins(filename.c_str());
-
+  if(!ins.good()){
+	throw std::runtime_error("couldn't open file" + filename);
+  }
   unsigned numVertices, dimension, numAttributes, border;
 
   ins >> numVertices >> dimension >> numAttributes >> border;
@@ -51,6 +53,9 @@ bool readNodeFile(std::string filename, std::vector<double>& vertices){
 bool readEleFile(std::string filename, std::vector<unsigned>& triangles){
 
   std::ifstream ins(filename.c_str());
+  if(!ins.good()){
+	throw std::runtime_error("couldn't open file" + filename);
+  }
 
   unsigned numTriangles, nodesPerTriangle, numAttributes;
   

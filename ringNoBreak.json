@@ -1,0 +1,29 @@
+{
+    "femObjects" : [
+	{
+	    "meshName" : "ring.1",
+	    "density" : 1000,
+	    "lambda" : 1e8,
+	    "mu" : 1e8,
+	    "dampLambda" : 2000,
+	    "dampMu" : 2000,
+	    "raleighAlpha" : 0,
+	    "raleighBeta" : 0,
+	    "toughness" : 1.1e8,
+	    "centerTo" : {
+		"x": 0,
+		"y" : 4
+		},
+	    "desiredScale" : 12
+	}
+    ],
+
+    "dt" : 0.033,
+
+    "planeObstacles" : [
+	{ "x" : 0,
+	  "y" : 1,
+	  "offset" : 0
+	}
+    ]
+}

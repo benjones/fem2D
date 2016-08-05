@@ -185,7 +185,7 @@ void FemMesh::computeDeformationGradient(bool isExplicit){
       
       auto forceProduct = e.elementRotation*(e.stress + viscousStress);
       for(auto i : range(3)){
-	nodes[e.nodes[i]].force += forceProduct*e.faceNormals[(i+1)%3];
+		nodes[e.nodes[i]].force += forceProduct*e.faceNormals[(i+1)%3];
       }
     }
   }

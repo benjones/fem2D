@@ -54,7 +54,8 @@ cghs( unsigned N, const MATRIX &A, const PC_MATRIX &C,
 
 
 //#include "cblas.h"
-#include <cblas.h>
+//#include <cblas.h>
+#include<Accelerate/Accelerate.h>
 
 
 
