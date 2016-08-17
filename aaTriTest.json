@@ -2,19 +2,19 @@
     "femObjects" : [
 		{
 			"meshName" : "aaTri",
-			"density" : 1,
-			"lambda" : 1e1,
-			"mu" : 1e1,
-			"dampLambda" : 2,
-			"dampMu" : 2,
+			"density" : 0.1,
+			"lambda" : 0.9,
+			"mu" : 0.9,
+			"dampLambda" : 0.001,
+			"dampMu" : 0.001,
 			"raleighAlpha" : 0,
 			"raleighBeta" : 0,
 			"toughness" : 1e100,
 			"centerTo" : {
 				"x": 0,
-				"y" : 0
+				"y" : 10
 			},
-			"constrainedNodes" : [0 , 1]
+			"constrainedNodes" : [0]
 		}	
     ],
 

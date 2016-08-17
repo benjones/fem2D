@@ -109,8 +109,8 @@ void World::integrate(){
 
 
   for(auto & f : femObjects){
-    //    f.integrate(dt);
-    f.integrateBackwardsEuler(dt);
+	f.integrate(dt);
+	//f.integrateBackwardsEuler(dt);
     f.collidePlanes(planeObstacles);
   }
 }

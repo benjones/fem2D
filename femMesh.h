@@ -27,7 +27,8 @@ public:
   vec2 faceNormals[3];
 
   mat2 beta;
-
+  mat2 bMatrix;
+  
   mat2 stiffnessMatrices[6];
   //00, 01, 02, 11, 12, 22, symmetric, so only store these
 

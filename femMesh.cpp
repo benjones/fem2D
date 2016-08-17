@@ -4,7 +4,7 @@
 #include "planeObstacle.h"
 #include "cghs.h"
 #include <SDL_opengl.h>
-
+#include <unsupported/Eigen/MatrixFunctions>
 
 void FemMesh::initialize(const std::vector<double>& vertices,
 			 const std::vector<unsigned>& triangles,
@@ -44,6 +44,9 @@ void FemMesh::initialize(const std::vector<double>& vertices,
     e.beta.col(0) = u1 - u0;
     e.beta.col(1) = u2 - u0;
 
+	//for matrix exponential approach
+	e.bMatrix = e.beta;
+	
     //area (length) weighted face normals
     //since I'm not normalizing, the vectors are already "area weighted"
     e.faceNormals[0] = /*(u1 - u0).norm()* */vec2(u1.y() - u0.y(), u0.x() - u1.x());
@@ -151,14 +154,24 @@ void FemMesh::computeDeformationGradient(bool isExplicit){
 
     mat2 vMatrix;
 
-    auto deformationGradient = xMatrix*e.beta;
+	mat2 bR, bS, xS;
+	Utils::RSDecomp(xMatrix, e.elementRotation, xS);
+	Utils::RSDecomp(e.bMatrix, bR, bS);
+
+	std::cout << "xS: " << xS << std::endl;
+	std::cout << "bS: " << bS << std::endl;
+	
+	auto deformationGradient = (0.1*(xS - bS)).exp();
+	//xMatrix*e.beta;
     
-    mat2 S;
-    Utils::RSDecomp(deformationGradient, e.elementRotation, S);
+    //mat2 S;
+    //Utils::RSDecomp(deformationGradient, e.elementRotation, S);
 
-    auto fTwiddle = e.elementRotation.transpose()*deformationGradient;
-    auto strain = 0.5*(fTwiddle + fTwiddle.transpose()) - mat2::Identity();
+    //auto fTwiddle = e.elementRotation.transpose()*deformationGradient;
+    //auto strain = 0.5*(fTwiddle + fTwiddle.transpose()) - mat2::Identity();
 
+	auto strain = deformationGradient - mat2::Identity();
+	
     e.stress = materialParameters.lambda*strain.trace()*mat2::Identity() +
       2*materialParameters.mu*strain;
     
@@ -183,8 +196,10 @@ void FemMesh::computeDeformationGradient(bool isExplicit){
 	materialParameters.dampLambda*strainRate.trace()*mat2::Identity() +
 	2*materialParameters.dampMu*strainRate;
       
-      auto forceProduct = e.elementRotation*(e.stress + viscousStress);
-      for(auto i : range(3)){
+      //auto forceProduct = e.elementRotation*(e.stress + viscousStress);
+      auto forceProduct = e.elementRotation*(e.stress*bR + viscousStress);
+
+	  for(auto i : range(3)){
 		nodes[e.nodes[i]].force += forceProduct*e.faceNormals[(i+1)%3];
       }
     }
